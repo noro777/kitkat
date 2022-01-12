@@ -1,0 +1,167 @@
+.heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 3.2117%;
+    padding-right: 5.47085%;
+}
+
+.headingTitle {
+    width: 44.2188%;
+    font-family: "Arial AMU", sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 4.625rem;
+    letter-spacing: 0.05em;
+    color:white;
+}
+
+.headingTitleBlack {
+    width: 44.2188%;
+    font-family: "Arial AMU", sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 4.625rem;
+    letter-spacing: 0.05em;
+    color:#252525;
+}
+
+.headingImg {
+    min-width: 44.9981rem;
+    height: 48.4294rem;
+    background: url(../../../static/images/ConnectFormLogo/Heading.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*========== Media Queries ==========*/
+
+/*---------- 1368px ----------*/
+
+@media (max-width: 1368px) {
+    .headingTitle {
+        min-width: 32.1875rem;
+        line-height: 4.5994rem;
+        z-index: 2;
+        margin-right: -1rem;
+    }
+    .headingImg {
+        min-width: 34.0019rem;
+        height: 36.5944rem;
+    }
+    .headingTitleBlack {
+        min-width: 32.1875rem;
+        line-height: 4.5994rem;
+        z-index: 2;
+        margin-right: -1rem;
+    }
+
+}
+
+/*---------- 1100px ----------*/
+
+@media (max-width: 1100px) {
+    .headingTitle {
+        margin-right: -5rem;
+    }
+    .headingTitleBlack {
+        margin-right: -5rem;
+    }
+}
+
+/*---------- 1000px ----------*/
+
+@media (max-width: 1000px) {
+    .heading {
+        padding-left: calc(3.2117% / 4);
+        padding-right: calc(5.47085% / 4);
+    }
+    .headingImg {
+        min-width: 27.8731rem;
+        height: 29.9988rem;
+    }
+    .headingTitle {
+        width: 26.1875rem;
+    }
+
+    .headingTitleBlack {
+        width: 26.1875rem;
+    }
+}
+
+/*---------- 884px ----------*/
+
+@media (max-width: 884px) {
+    .headingTitle {
+        font-size: 3rem;
+        min-width: 22.875rem;
+        line-height: 3.45rem;
+        padding-left: 0.5rem;
+    }
+    .headingTitleBlack {
+        font-size: 3rem;
+        min-width: 22.875rem;
+        line-height: 3.45rem;
+        padding-left: 0.5rem;
+    }
+}
+
+/*---------- 768px ----------*/
+
+@media (max-width: 768px) {
+    .heading {
+        padding: 0;
+        justify-content: space-between;
+    }
+    .headingImg {
+        min-width: 53vw;
+        height: 53vw;
+    }
+    .headingTitle {
+        font-size: 3rem;
+    }
+    .headingTitle {
+        min-width: 59%;
+        padding: 0;
+    }
+    .headingTitleBlack {
+        font-size: 3rem;
+    }
+    .headingTitleBlack {
+        min-width: 59%;
+        padding: 0;
+    }
+}
+
+/*---------- 637px ----------*/
+
+@media (max-width: 637px) {
+    .headingTitle {
+        font-size: 2.55rem;
+    }
+    .headingTitleBlack {
+        font-size: 2.55rem;
+    }
+}
+
+/*---------- 544px ----------*/
+
+@media (max-width: 544px) {
+    .headingTitle {
+        min-width: 11.9375rem;
+        padding-left: 0.625rem;
+        font-size: 1.5rem;
+        line-height: 1.725rem;
+    }
+    .headingImg {
+        margin-right: -1.91875rem;
+    }
+    .headingTitleBlack {
+        min-width: 11.9375rem;
+        padding-left: 0.625rem;
+        font-size: 1.5rem;
+        line-height: 1.725rem;
+    }
+}

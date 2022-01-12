@@ -1,0 +1,61 @@
+.QR {
+    width: 100%;
+    height: 31.25rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.QRBlack {
+    width: 100%;
+    height: 31.25rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.QRTitle {
+    width: 25.0625rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.QRTitleBlack {
+    width: 25.0625rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.QRCode {
+    width: 23.145625rem;
+    height: 23.145625rem;
+}
+
+.QRCodeBlack {
+    width: 23.145625rem;
+    height: 23.145625rem;
+}
+.QRcodeImage{
+    filter: invert(1%);
+    -webkit-filter: invert(1%);
+}
+.QRcodeImageBlack{
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+/*========== Media Queries ==========*/
+
+/*---------- 768px ----------*/
+
+@media (max-width: 768px) {
+    .QR {
+        display: none;
+    }
+    .QRBlack {
+        display: none;
+    }
+}

@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Arial AMU';
+    src: local('Arial AMU') url('./assets/fonts/Arial\ AMU.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Arial AMU';
+    src: local('Arial AMU') url('./assets/fonts/Arial\ AMU\ Bold.ttf') format('truetype');
+    font-weight: 700;
+}

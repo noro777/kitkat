@@ -1,0 +1,12 @@
+$underline:#B4B4B4;
+$background_dark:#6A6A6A;
+$background_header:linear-gradient(to right, rgba(181,101,216,1) 0%, rgba(205,96,159,1) 100%);
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+div, input, header, section, footer {
+    box-sizing: border-box;
+}

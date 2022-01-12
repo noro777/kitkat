@@ -1,0 +1,105 @@
+@import "../../../styles/styles.scss";
+
+::placeholder{
+    color: white;
+    opacity:0.8
+}
+
+#name_surname_input{
+    color: white;
+    border:0;
+    outline:0;
+}
+
+.tel-box{
+    display: flex;
+    margin: 1rem;
+    margin-top: 0;
+  }
+
+.select-box{
+  margin: 1rem;
+  width: 60px;
+  height: 40px;
+ }
+
+ .flag-img{
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 5px;
+ }
+
+.select-box select{
+    font-family: 'Lato', sans-serif;
+    width: 60px;
+    height: 40px;
+    background: none;
+    position: absolute;
+    border: none;
+    font-size: 1rem;
+    padding-left: 4rem;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  
+  .tel{
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 2px solid black;
+    outline: none;
+    margin: 1rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    color: black;
+    font-weight: thick;
+    border-radius: 5px;
+  }
+
+.call_button {
+  height:100%;
+  width:100%;
+  font-size:16px;
+  color:white;
+  justify-content:start;
+  border-radius:10px;
+  background:$background_header;
+  transition: 0.5s;
+  outline: 0;
+  border: 0;
+  position: relative;
+  cursor:pointer;
+}
+
+.call_button:hover{
+  background-color: skyblue;
+}
+
+#order_call_button{
+  height: 20%;
+}
+
+.button_icon{
+  position: absolute;
+  top: 35%;
+  left: 15px;
+}
+
+#phone_call_button{
+  background: #C75300;
+}
+
+#viber_call_button{
+  background: #6328C2;
+}
+
+#whatsapp_call_button{
+  background:#008D1F;
+}
+
+#telegram_call_button{
+  background:#00879A;
+}

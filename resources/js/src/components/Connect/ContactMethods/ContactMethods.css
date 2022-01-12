@@ -1,0 +1,11 @@
+.contactMethodsContainer {
+    width: calc(100% - 8.771929824561404%);
+    height: 100%;
+    margin: auto;
+}
+
+.contactMethods {
+    width: 100%;
+    height: auto;
+    position: relative;
+}

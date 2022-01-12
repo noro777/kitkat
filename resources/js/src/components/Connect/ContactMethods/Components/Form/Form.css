@@ -1,0 +1,232 @@
+.form {
+    margin: 5rem 0;
+    width: 100%;
+    height: 13.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.formBlack {
+    margin: 5rem 0;
+    width: 100%;
+    height: 13.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.formInfo {
+    margin-right: 0.9375rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formInfoBlack {
+    margin-right: 0.9375rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formInputFiled {
+    width: 100%;
+    height: 5.9375rem;
+    position: relative;
+}
+
+.formInputFiledBlack {
+    width: 100%;
+    height: 5.9375rem;
+    position: relative;
+}
+
+.formMessage {
+    margin-left: 0.9375rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.formMessageBlack {
+    margin-left: 0.9375rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.formTextFiled {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.formTextFiledBlack {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.filed {
+    background: #4b4b4b80;
+    border-radius: 0.9375rem;
+    overflow: hidden;
+}
+
+.filedBlack {
+    background: #e9e9e9;
+    border-radius: 0.9375rem;
+    overflow: hidden;
+}
+
+.filed input, .filed textarea {
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    color: #ffffffcc;
+    background: transparent;
+    border: none;
+    padding-left: 1.1875rem;
+    padding-right: 1.1875rem;
+}
+
+.filedBlack input, .filedBlack textarea {
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    color: #252525cc;
+    background: transparent;
+    border: none;
+    padding-left: 1.1875rem;
+    padding-right: 1.1875rem;
+}
+
+.filed textarea {
+    padding-top: 2.375rem;
+    padding-bottom: 1.375rem;
+    resize: none;
+}
+
+.filedBlack textarea {
+    padding-top: 2.375rem;
+    padding-bottom: 1.375rem;
+    resize: none;
+}
+
+.filed textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.filedBlack textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.filed input:focus-visible, .filed textarea:focus-visible {
+    outline: none;
+}
+
+.filedBlack input:focus-visible, .filedBlack textarea:focus-visible {
+    outline: none;
+}
+
+.filed input::placeholder, .filed textarea::placeholder {
+    position: absolute;
+    left: 1.1875rem;
+    top: 2.375rem;
+}
+
+.filedBlack input::placeholder, .filedBlack textarea::placeholder {
+    position: absolute;
+    left: 1.1875rem;
+    top: 2.375rem;
+}
+
+.formSubmit {
+    padding: 1rem 1.875rem;
+    position: absolute;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(92.88deg, #B565D8 9.74%, #EE609C 99.48%);
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    right: 1.25rem;
+    bottom: 1.25rem;
+}
+
+.formSubmitBlack {
+    padding: 1rem 1.875rem;
+    position: absolute;
+    font-weight: 700;
+    color: #252525;
+    background: linear-gradient(92.88deg, #B565D8 9.74%, #EE609C 99.48%);
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    right: 1.25rem;
+    bottom: 1.25rem;
+}
+
+/*========== Media Queries ==========*/
+
+/*---------- 768px ----------*/
+
+@media (max-width: 768px) {
+    .form {
+        flex-flow: column;
+        height: 28.4375rem;
+    }
+    .formInfo, .formMessage {
+        width: 100%;
+        margin: 0;
+    }
+    .formInfo {
+        min-height: 13.75rem;
+        margin-bottom: 0.7813rem;
+    }
+    .formMessage {
+        margin-top: 0.7813rem;
+        min-height: 13.75rem;
+    }
+
+}
+
+/*---------- 320px ----------*/
+
+@media (max-width: 320px) {
+    .filed input::placeholder, .filed textarea::placeholder {
+        top: 1.75rem;
+    }
+    .filed textarea {
+        padding-top: 1.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .form {
+        height: 22.9375rem;
+    }
+    .formInputFiled {
+        height: 4.375rem;
+    }
+    .formInfo {
+        min-height: 10.625rem;
+        margin-bottom: 0.9375rem;
+    }
+    .formMessage {
+        min-height: 10.4375rem;
+        margin-top: 0.9375rem;
+    }
+    .formSubmit {
+        padding: auto 0.75rem;
+    }
+}

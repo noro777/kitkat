@@ -1,0 +1,11 @@
+@import "../../styles/styles.scss";
+
+body{
+  height: 1500px;
+}
+
+#faculties_container:hover #faculties_list{
+  opacity:0.85;
+  z-index: 2;
+  display: block;
+}
