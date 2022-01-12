@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Storage;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return "uhwfuih";
 // })->name('main');
 
 
@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Storage;
 Route::view('/services', 'welcome')->name('services');
 Route::view('/contacts', 'welcome')->name('contacts');
 
-// Auth::routes();
+// Auth::routes(['verify'=>true]);
 // Route::view('/', 'welcome');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -55,7 +55,7 @@ Route::post('/contact','Contact\ContactController@index')->name('contact');
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
-    Route::middleware(['guest:student','guest:admin','guest:student','guest:employer','guest:guest','guest:institution','guest:lecturer','guest:partner'])
+    Route::middleware(['guest:student','guest:admin','guest:employer','guest:guest','guest:institution','guest:lecturer','guest:partner'])
     ->group(function () {
 
         Route::view('/', 'welcome')->name('main');
@@ -95,8 +95,16 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::view('/partner','user.admin.partner',compact('partners'))->name('partner');
 
             Route::view('/contact','user.admin.contact',compact('contacts'))->name('contact');
+
+
             Route::view('/freelance','user.admin.freelance',compact('freelances'))->name('freelance');
+            Route::view('/freelance/create','user.admin.freelance_create')->name('freelance.create');
+            Route::post('/freelance/store','Work\FreelanceController@create')->name('freelance.store');
+
+
             Route::view('/work','user.admin.work',compact('works'))->name('work');
+            Route::view('/work/create','user.admin.work_create')->name('work.create');
+            Route::post('/work/store','Work\WorkController@create')->name('work.store');
 
 
             Route::view('/news_suggestion','user.admin.news_suggestions',compact('NewsSuggestions'))->name('NewsSuggestion');
@@ -121,7 +129,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
 
         Route::middleware(['auth:student'])->group(function () {
-            Route::view('/home', 'user.student.home')->name('home');
+            $students = Student::all();
+            Route::view('/home', 'user.student.home',compact('students'))->name('home');
             Route::post('/logout', 'User\StudentController@logout')->name('logout');
             Route::view('/', 'welcome')->name('main');
             Route::view('/services', 'welcome')->name('services');

@@ -65,31 +65,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
-
-
-    public function register(Request $request)
+    protected function create(array $data)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->code = sha1(time());
-        $user->save();
-
-        if($user != null){
-            MailController::sendEmail($user->name,$user->email,$user->code);
-            return redirect()->back()->with(session()->flash('alert','toshnia'));
-        }
-
-        return redirect()->back()->with(session()->flash('alert','toshni chi'));
-
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
+
+
+    // public function register(Request $request)
+    // {
+    //     $user = new User();
+    //     $user->name = $request->name;
+    //     $user->email = $request->email;
+    //     $user->password = Hash::make($request->password);
+    //     $user->code = sha1(time());
+    //     $user->save();
+
+    //     // if($user != null){
+    //     //     MailController::sendEmail($user->name,$user->email,$user->code);
+    //     //     return redirect()->back()->with(session()->flash('alert','toshnia'));
+    //     // }
+
+    //     return redirect()->back()->with(session()->flash('alert','toshni chi'));
+
+    // }
 }

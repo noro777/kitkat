@@ -1,10 +1,11 @@
+<a href="{{ route('admin.freelance.create') }}">Create</a>
+
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">email</th>
-        <th scope="col">message</th>
+        <th scope="col">field</th>
+        <th scope="col">description</th>
         <th scope="col">created_at</th>
       </tr>
     </thead>
@@ -12,9 +13,8 @@
         @foreach ($freelances as $freelance)
             <tr>
                 <th scope="row">{{ $freelance->id }}</th>
-                <td>{{ $freelance->name }}</td>
-                <td>{{ $freelance->email }}</td>
-                <td>{{ $freelance->message }}</td>
+                <td>{{ $freelance->field }}</td>
+                <td>{{ $freelance->description }}</td>
                 <td>{{ $freelance->created_at }}</td>
 
             </tr>

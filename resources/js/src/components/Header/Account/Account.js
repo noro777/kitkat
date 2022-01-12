@@ -24,11 +24,11 @@ function Account({width, height,headerToAccaunt}){
     // const [glxavor,setGlxavor] = useState(headerToAccaunt.appToHeader.glxavor)
 
 
-    async function f(e){
+    function f(e){
 
         // console.log(e.target.value)
         // let lang = e.target.value
-        await axios.post('api/lang/change',{
+         axios.post('api/lang/change',{
         "lang":e.target.value
 }
         ).then((res)=>{

@@ -12,7 +12,7 @@
         <th scope="row">1</th>
         <td>{{ $student->name }}</td>
         <td>{{ $student->email_or_phone }}</td>
-<img src="{{ asset('images/'.$student->image) }}"></img>
+        <img src="{{ asset('images/'.$student->image) }}"></img>
       </tr>
       {{--  {{ dd($student->image) }}  --}}
 

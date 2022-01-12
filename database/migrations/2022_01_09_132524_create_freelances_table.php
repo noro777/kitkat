@@ -18,7 +18,7 @@ class CreateFreelancesTable extends Migration
             $table->string('field');
             $table->text('description');
             $table->text('cost')->nulable();
-            $table->text('requirements');
+            $table->text('requirements')->nullable();
             $table->timestamps();
         });
     }

@@ -15,13 +15,13 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('field');
+            $table->string('field')->nullable();
             $table->text('description');
-            $table->text('requirements');
+            $table->text('requirements')->nullable();
             $table->string('address');
-            $table->string('salary');
-            $table->string('schedule');
-            $table->string('type');
+            $table->string('salary')->nullable();
+            $table->string('schedule')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

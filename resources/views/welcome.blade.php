@@ -19,9 +19,6 @@
             @if (Route::has('login'))
 
                     @auth
-                        <a href="{{ route('changeLang',['lang'=>'en']) }}">en</a>
-                        <a href="{{ route('changeLang',['lang'=>'ru']) }}">ru</a>
-                        <a href="{{ route('changeLang',['lang'=>'hy']) }}">hy</a>
                         {{ auth()->user() }}
 
                     @else

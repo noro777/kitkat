@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import './QRCode.css';
-import qr from './../../../../../../storage/app/public/img/qr-code/img-1640976446.svg'
+import qr from '../../../../../../public/images/QR.svg'
 import { connect } from 'react-redux';
 import axios from 'axios';
 
