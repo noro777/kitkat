@@ -10,7 +10,7 @@ import { setColorModeAC } from '../../../../../store/theme-color';
 const Iconic = (props) => {
     return (
         <div>
-        {props.colorMode 
+        {props.colorMode === "true"
         ?
         <section className="iconic">
         <a href="https://www.facebook.com/Glteducenter" target="_blank" className="iconicItem"><RiFacebookFill /></a>

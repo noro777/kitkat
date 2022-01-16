@@ -1,17 +1,10 @@
-@media  screen and (min-width:500px) {
-  #menu_container1:hover #menu_list{
-    opacity: 0.85;
-    z-index: 2;
-    display: block;
- }
-}
-
 @media screen and (max-width:1368px){
   #contact_link{
     display: block;
   }
   #responsive_work{
     display: block;
+    height: 30%;
   }
   #work_large{
     display: none;
@@ -32,7 +25,8 @@
     height: 30%;
   }
   #menu_list{
-     width: 750%;
+     width: 800%;
+     left: -55%;
   }
 }
 
@@ -47,7 +41,8 @@
     width: 90%;
   } 
   #menu_list{
-    width: 1100%;
+    width: 1000%;
+    left: -350%;
   } 
 }
 
@@ -55,18 +50,19 @@
    #search_box{
      width:250%;
    }
-   #work_listitem{
-     height: 23%;
-   }
    #contact_listitem{
-     height: 23%;
+     height: 15%;
    }
    #news_listitem{
-     height: 23%;
+     height: 15%;
+   }
+   #responsive_work{
+    height: 15%;
    }
    #menu_list{
      height: 350%;
-     width: 700%;
+     width: 900%;
+     left: -500%;
    }
    #responsive_menu_cont{
      display: flex;
@@ -85,7 +81,7 @@
   }
 }
 
-@media screen and (max-width:780px){
+@media screen and (max-width:800px){
   #main_large{
     display: none;
   }
@@ -96,11 +92,11 @@
     width: 50%;
   }
   #header_content{
-    width: 100%;
+    width: 95%;
   }
   #menu_list{
     width: 650%;
-    left: -590%;
+    left: -565%;
   }
   #grid_call{
     opacity: 1;
@@ -134,7 +130,7 @@
   }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:700px) {
    #nav_container{
      display: none;
    }
@@ -163,6 +159,7 @@
   }
   #faculties_list_responsive{
     top: 550%;
+    width: 95%;
   }
 }
 

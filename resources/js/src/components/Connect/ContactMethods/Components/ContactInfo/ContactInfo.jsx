@@ -3,19 +3,27 @@ import { FiPhoneCall } from 'react-icons/fi';
 import { connect } from 'react-redux';
 import { getColor } from '../../../../../store/reselect/theme-reselect';
 import { setColorModeAC } from '../../../../../store/theme-color';
+import { useDispatch } from 'react-redux';
 
 
 import './ContactInfo.css';
 
 const ContactInfo = (props) => {
+    const dispatch = useDispatch()
 
+    function openCallWindow(){
+        dispatch({
+            type:"toggleCallWindow",
+            payload:true
+        })
+    }
 
     return (
         <div>
-            {props.colorMode
+            {props.colorMode === "true"
             ?
             <section className="contactInfo">
-            <div className="contactInfoCall" id="orderCall">
+            <div className="contactInfoCall" onClick={openCallWindow} id="orderCall">
                 <div className="contactInfoBtn"><FiPhoneCall /></div>
                 <div className="contactInfoOrder">Պատվիրել զանգ</div>
             </div>
@@ -38,7 +46,7 @@ const ContactInfo = (props) => {
         </section>
             :
             <section className="contactInfo">
-            <div className="contactInfoCall" id="orderCall">
+            <div className="contactInfoCall"onClick={openCallWindow} id="orderCall">
                 <div className="contactInfoBtn"><FiPhoneCall /></div>
                 <div className="contactInfoOrder">Պատվիրել զանգ</div>
             </div>

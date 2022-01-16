@@ -25,32 +25,6 @@ class EmployerController extends Controller
     use RegistersUsers;
     protected $redirectTo = '/employer/home';
 
-    protected function validator(array $data){
-        if(is_numeric($data['email_or_phone'])){
-            return Validator::make($data, [
-            'name'=>'required',
-            'email_or_phone'=>'required|unique:admins,email_or_phone',
-            'password'=>'required|confirmed'
-        ]);
-        }else{
-            return Validator::make($data, [
-                'name'=>'required',
-                'email_or_phone'=>'required|email|unique:admins,email_or_phone',
-                'password'=>'required|confirmed'
-            ]);
-        };
-    }
-
-    protected function create(array $data)
-    {
-        return Employer::create([
-            'name' => $data['raquest']['name'],
-            'email_or_phone' => $data['raquest']['email_or_phone'],
-            'password' => Hash::make($data['raquest']['password']),
-            'image'=>$data['image']
-        ]);
-    }
-
     protected function guard()
     {
         return Auth::guard('employer');
@@ -67,6 +41,37 @@ class EmployerController extends Controller
             ? new JsonResponse([], 204)
             : redirect('/');
     }
+
+    protected function validator(array $data){
+        if(is_numeric($data['email_or_phone'])){
+            return Validator::make($data, [
+            'name'=>'required',
+            'email_or_phone'=>'required|unique:employers,email_or_phone',
+            'password'=>'required|confirmed',
+            'image'=>'required'
+        ]);
+        }else{
+            return Validator::make($data, [
+                'name'=>'required',
+                'email_or_phone'=>'required|email|unique:employers,email_or_phone',
+                'password'=>'required|confirmed',
+                'image'=>'required'
+            ]);
+        };
+    }
+
+    protected function create(array $data)
+    {
+        // dd($data['image']);
+
+        return Employer::create([
+            'name' => $data['raquest']['name'],
+            'email_or_phone' => $data['raquest']['email_or_phone'],
+            'password' => Hash::make($data['raquest']['password']),
+            'image'=>$data['image']
+        ]);
+    }
+
 
     // public function update(Request $request){
     //     //validation rules

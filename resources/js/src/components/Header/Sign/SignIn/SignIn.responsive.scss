@@ -1,0 +1,15 @@
+@media screen and (max-width:450px) {
+    .sign-up-cont{
+        height: 385px;
+        width: 200px;
+        margin: 10px 0;
+    }
+    .sign-up-types-cont{
+        height: 355px;
+        width: 200px;
+        flex-direction: column;
+    }
+    .sign-up-column{
+        width: 100%;
+    }
+}

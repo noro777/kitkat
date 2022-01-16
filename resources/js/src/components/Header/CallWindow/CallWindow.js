@@ -4,12 +4,9 @@ import './CallWindow.scss';
 import './CallWindow.responsive.scss';
 import theme from '../../../styles/theme';
 import $ from 'jquery';
-// import jQuery from "jquery";
 import Logo from './../../../static/images/Header/logo/logo.png'
 import {Box, Button, Grid, Link, Typography, Select, TextField,MenuItem, InputLabel} from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-// import { useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import phoneIcon from '../../../static/images/Header/call-window/phoneIcon.svg';
@@ -17,8 +14,8 @@ import viberIcon from '../../../static/images/Header/call-window/viberIcon.svg';
 import telegramIcon from '../../../static/images/Header/call-window/telegramIcon.svg';
 import whatsappIcon from '../../../static/images/Header/call-window/whatsappIcon.svg';
 import Assistant from '../../../static/images/Header/call-window/assistant.png';
-import { callWindowToggleAC } from "../../../store/header-reducer";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
 
 
 function CallWindow( {status} ){
@@ -29,12 +26,16 @@ function CallWindow( {status} ){
     const callWindow = useRef(null)
     const telInp = useRef()
     const [phoneState, setPhoneState] = useState(15151)
-    const navigate = useNavigate()
+    const [callStatus,setCallStatus] = useState("")
+    const dispatch = useDispatch()
      
     // closing the window 
      function closeCallWindow(){
          setShowStatus(false)
-         callWindowToggleAC(false)
+         dispatch({
+           type:"toggleCallWindow",
+           payload:false
+         })
      }
     
     //  making call data for sending to server 
@@ -44,27 +45,28 @@ function CallWindow( {status} ){
       var date = data.get("date")
       var fullName = data.get("fullName")
       var number = `+${phoneState}`
-      const callOrder = {
-         date,
-         fullName,
-         number
-     }
+      if(fullName.length < 2){
+        setCallStatus("Անուն Ազգանունը պետք է լինի առնվազն 2 նիշ")
+      }
+      else if(number.length < 9){
+        setCallStatus("հեռախոսահամարը պետք է լինի առնվազն 9 նիշ")
+      }
+      else{
+        axios.post("/callOrder", {
+          date:date,
+          fullName:fullName,
+          number:number
+          }).then((resp) => {
+           setCallStatus(resp.data)
+         })
+      }
     }
-
-    // function clickPhoneCall(event){
-      //  event.preventDefault()
-       
-    // }
-
-    // function callByViber() {
-    //   navigate("viber://chat?number=+37498459635")
-    // }
 
     useEffect(() => {
       setShowStatus(status)
     }, [status])
 
-          // making dates select options   
+    // making dates select options   
     useEffect(() => { 
       const date = new Date()
       var day = date.getDate()
@@ -80,7 +82,6 @@ function CallWindow( {status} ){
         }
         var point = `${hour}:00/${day}/${month}`
         dates.current.push(point)
-        console.log(dates.current);
         setDated(true)
       }
   }, [])
@@ -90,8 +91,6 @@ function CallWindow( {status} ){
     if(showStatus){
     var screenWidth = window.innerWidth
     if(screenWidth < 500){
-        console.log('small');
-        console.log("loaded");
         var phoneButton = $("#phone_call_button_link")
         var viberButton = $("#viber_call_button_link")
         var whatsappButton = $("#whatsapp_call_button_link")
@@ -113,7 +112,6 @@ function CallWindow( {status} ){
 
     window.addEventListener("resize", () => {
       if(screenWidth < 500){
-        console.log('small');
           var phoneButton = $("#phone_call_button_link")
           var viberButton = $("#viber_call_button_link")
           var whatsappButton = $("#whatsapp_call_button_link")
@@ -131,7 +129,6 @@ function CallWindow( {status} ){
           content2.css({"display":"none","width":"0"})
       }  
       else if(screenWidth > 500){
-        console.log("big");
         var phoneButton = $("#phone_call_button_link")
         var viberButton = $("#viber_call_button_link")
         var whatsappButton = $("#whatsapp_call_button_link")
@@ -155,7 +152,6 @@ function CallWindow( {status} ){
     $(window).on("click", (event) => {
        if(event.target === demo){
         setShowStatus(false)
-        callWindowToggleAC(false)
        }
     })
    }
@@ -163,6 +159,7 @@ function CallWindow( {status} ){
 
     return(
      <>
+      <div></div>
       {(showStatus) ? 
        // demo container
        <Box
@@ -170,7 +167,7 @@ function CallWindow( {status} ){
        height="100%"
        id="demo"
        position="fixed"
-       sx={{backgroundColor:theme.palette.underline.main,opacity:"0.9",zIndex:"2",display:"flex",alignItems:"center",justifyContent:"center"}}>
+       sx={{backgroundColor:"black",opacity:"0.95",zIndex:"5",display:"flex",alignItems:"center",justifyContent:"center"}}>
          {/* CallWindow */}
         <Box
         width="600px"
@@ -178,7 +175,7 @@ function CallWindow( {status} ){
         id="callWindow"
         ref={callWindow}
         display="flex"
-        sx={{backgroundColor:theme.palette.background.dark,transition:"0.5s",position:"relative",zIndex:2,flexDirection:"column",alignItems:"center",p:2,borderRadius:"10px",boxShadow:1}}>
+        sx={{backgroundColor:theme.palette.background.dark,transition:"0.5s",position:"relative",zIndex:"6",flexDirection:"column",alignItems:"center",p:2,borderRadius:"10px",boxShadow:1}}>
            <Grid
             container
             id="title_container"
@@ -274,16 +271,15 @@ function CallWindow( {status} ){
                         id="name_surname_input"
                         type="text"
                         name="fullName"
-                        required
                         placeholder="Անուն Ազգանուն"
-                        style={{width:"100%",backgroundColor:theme.palette.underline.main,borderRadius:"15px",height:"20%",color:"white",padding:"15px",boxSizing:"border-box"}}
+                        style={{width:"100%",backgroundColor:theme.palette.underline.main,borderRadius:"15px",height:"20%",color:"black",padding:"15px",boxSizing:"border-box"}}
                         />
                        <select
                         placeholder="Օր/Ժամ"
                         id=""
                         name="date"
                         defaultValue={"Օր/Ժամ"}
-                        style={{backgroundColor:theme.palette.underline.main,color:"white",borderRadius:"15px",height:"20%",padding:"0px 12px"}}
+                        style={{backgroundColor:theme.palette.underline.main,color:"black",borderRadius:"15px",height:"20%",padding:"0px 12px"}}
                         >
                           <option
                           value={"Օր/Ժամ"}>
@@ -302,7 +298,6 @@ function CallWindow( {status} ){
                           ref={telInp}
                           disableElevation={true}
                           id="phoneInput"
-                          required
                           name="phone"
                           country={"am"}
                           onChange={phone => setPhoneState(phone)}
@@ -312,7 +307,7 @@ function CallWindow( {status} ){
                            height:"100%",
                            borderRadius:"15px",
                            backgroundColor:theme.palette.underline.main,
-                           color:"white",
+                           color:"black",
                          }}
                          buttonStyle={{
                           backgroundColor:"red",
@@ -335,6 +330,9 @@ function CallWindow( {status} ){
                           backgroundColor:theme.palette.underline.main,
                          }}
                         />
+                        <Typography sx={{fontSize:"12px"}}>
+                          {callStatus}
+                        </Typography>
                         <button
                         className="call_button"
                         id="order_call_button"

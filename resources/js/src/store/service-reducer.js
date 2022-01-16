@@ -21,6 +21,7 @@ import baptism from './../static/images/ServicePage/20.png'
 import campaings from './../static/images/ServicePage/21.png'
 import excursions from './../static/images/ServicePage/22.png'
 
+
 let initialState = {
     services: [
         {serviceId: 1, text:"Վեբ Կայքերի \n Պատրաստում", img: ri_computer},
@@ -48,7 +49,7 @@ let initialState = {
         {otherServiceId: 4, text:"Արշավների Կազմակերպում", img: campaings},
         {otherServiceId: 5, text:"Էքսկուրսիաների Կազմակերպում", img: excursions},
     ],
-    colorMode: false
+    colorMode: null
 }
 
 const CHANGE_COLOR_MODE = "CHANGE_COLOR_MODE"

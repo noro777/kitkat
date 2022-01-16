@@ -25,32 +25,32 @@ class StudentController extends Controller
     // }
 
     protected function validator(array $data){
+        // return "adsa";
         if(is_numeric($data['email_or_phone'])){
             return Validator::make($data, [
             'name'=>'required',
-            'email_or_phone'=>'required|unique:admins,email_or_phone',
-            'password'=>'required|confirmed',
-            'image'=>'required'
+            'email_or_phone'=>'required|unique:students,email_or_phone',
+            'password'=>'required|confirmed'
         ]);
         }else{
             return Validator::make($data, [
                 'name'=>'required',
-                'email_or_phone'=>'required|email|unique:admins,email_or_phone',
-                'password'=>'required|confirmed',
-                'image'=>'required'
+                'email_or_phone'=>'required|email|unique:students,email_or_phone',
+                'password'=>'required|confirmed'
             ]);
         };
     }
 
     protected function create(array $data)
     {
-
-        return Student::create([
+        $data1 = [
             'name' => $data['raquest']['name'],
             'email_or_phone' => $data['raquest']['email_or_phone'],
             'password' => Hash::make($data['raquest']['password']),
             'image'=>$data['image']
-        ]);
+        ];
+
+        return Student::create($data1);
     }
 
     protected function guard()

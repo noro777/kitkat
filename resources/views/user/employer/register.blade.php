@@ -13,7 +13,7 @@
                     {{ Session::get('sucses') }}
 
                     @endif
-                    <form method="POST" action="{{ route('employer.create') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('employer.create',['category'=>'employer']) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">

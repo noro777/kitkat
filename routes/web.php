@@ -4,7 +4,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\AdminController;
 use App\Http\Controllers\User\EmployerController;
 use App\Models\Contact\Contact;
+use App\Models\Facultets;
 use App\Models\NewsSuggestions;
+use App\Models\Services;
 use App\Models\Users\Employer;
 use App\Models\Users\Guest;
 use App\Models\Users\Institution;
@@ -41,9 +43,6 @@ use Illuminate\Support\Facades\Storage;
 
 
 
-Route::view('/services', 'welcome')->name('services');
-Route::view('/contacts', 'welcome')->name('contacts');
-
 // Auth::routes(['verify'=>true]);
 // Route::view('/', 'welcome');
 
@@ -55,19 +54,9 @@ Route::post('/contact','Contact\ContactController@index')->name('contact');
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
-    Route::middleware(['guest:student','guest:admin','guest:employer','guest:guest','guest:institution','guest:lecturer','guest:partner'])
-    ->group(function () {
+    Route::name('admin.')->group(function () {
 
-        Route::view('/', 'welcome')->name('main');
-
-        Route::view('/login', 'user.login')->name('login');
-        Route::post('/login', 'Controller@login')->name('check');
-        Route::view('/register', 'user.register')->name('register');
-    });
-
-    Route::prefix('admin')->name('admin.')->group(function () {
-
-        Route::middleware(['guest:admin'])->group(function () {
+        Route::middleware(['guest:admin'])->prefix('admin')->group(function () {
             Route::view('/register', 'user.admin.register')->name('register');
             Route::post('/register', [AdminController::class,'register'])->name('create');
 
@@ -75,52 +64,150 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
 
         Route::middleware(['auth:admin'])->group(function () {
-            $students = Student::all();
-            $employers = Employer::all();
-            $guests = Guest::all();
-            $institutions = Institution::all();
-            $lecturers = Lecturer::all();
-            $partners = Partner::all();
-            $contacts = Contact::all();
-            $works = Work::all();
-            $freelances = Freelance::all();
-            $NewsSuggestions = NewsSuggestions::all();
 
-            Route::view('/home', 'user.admin.home')->name('home');
-            Route::view('/student','user.admin.student',compact('students'))->name('student');
-            Route::view('/employer','user.admin.employer',compact('employers'))->name('employer');
-            Route::view('/guest','user.admin.guest',compact('guests'))->name('guest');
-            Route::view('/institution','user.admin.institution',compact('institutions'))->name('institution');
-            Route::view('/lecturer','user.admin.lecturer',compact('lecturers'))->name('lecturer');
-            Route::view('/partner','user.admin.partner',compact('partners'))->name('partner');
-
-            Route::view('/contact','user.admin.contact',compact('contacts'))->name('contact');
+            Route::name('auth.')->group(function () {
+                Route::view('/', 'welcome')->name('main');
+                Route::view('/services', 'welcome')->name('services');
+                Route::view('/contacts', 'welcome')->name('contacts');
+                Route::view('/facultets', 'welcome')->name('facultets');
+                Route::view('/lessons', 'welcome')->name('lessons');
+                Route::view('/news', 'welcome')->name('news');
+            });
 
 
-            Route::view('/freelance','user.admin.freelance',compact('freelances'))->name('freelance');
-            Route::view('/freelance/create','user.admin.freelance_create')->name('freelance.create');
-            Route::post('/freelance/store','Work\FreelanceController@create')->name('freelance.store');
 
 
-            Route::view('/work','user.admin.work',compact('works'))->name('work');
-            Route::view('/work/create','user.admin.work_create')->name('work.create');
-            Route::post('/work/store','Work\WorkController@create')->name('work.store');
+
+            Route::prefix('admin')->group(function () {
+
+                $students = Student::all();
+                $employers = Employer::all();
+                $guests = Guest::all();
+                $institutions = Institution::all();
+                $lecturers = Lecturer::all();
+                $partners = Partner::all();
+                $contacts = Contact::all();
+                $works = Work::all();
+                $freelances = Freelance::all();
+                $NewsSuggestions = NewsSuggestions::all();
+                $facultets = Facultets::all();
+                $services = Services::all();
+
+                Route::view('/home', 'user.admin.home')->name('home');
+                Route::view('/student','user.admin.student',compact('students'))->name('student');
+                Route::view('/employer','user.admin.employer',compact('employers'))->name('employer');
+                Route::view('/guest','user.admin.guest',compact('guests'))->name('guest');
+                Route::view('/institution','user.admin.institution',compact('institutions'))->name('institution');
+                Route::view('/lecturer','user.admin.lecturer',compact('lecturers'))->name('lecturer');
+                Route::view('/partner','user.admin.partner',compact('partners'))->name('partner');
+
+                Route::view('/contact','user.admin.contact',compact('contacts'))->name('contact');
 
 
-            Route::view('/news_suggestion','user.admin.news_suggestions',compact('NewsSuggestions'))->name('NewsSuggestion');
-            Route::view('/news_suggestions/create','user.admin.news_suggestions_create')->name('NewsSuggestionCreate');
-            Route::post('/news_suggestions/store','NewsSuggestionsController@create')->name('news_suggestions.store');
+                Route::view('/freelance','user.admin.freelance',compact('freelances'))->name('freelance');
+                Route::view('/freelance/create','user.admin.freelance_create')->name('freelance.create');
+                Route::post('/freelance/store','Work\FreelanceController@create')->name('freelance.store');
+
+                Route::view('/facultets','user.admin.facultets',compact('facultets'))->name('facultets');
+                Route::view('/facultets/create','user.admin.facultets_create')->name('facultets.create');
+                Route::post('/facultets/store','Facultets@create')->name('facultets.store');
+
+                Route::view('/services','user.admin.services',compact('services'))->name('services');
+                Route::view('/services/create','user.admin.services_create')->name('services.create');
+                Route::post('/services/store','Services@create')->name('services.store');
 
 
-            Route::view('/', 'welcome')->name('main');
-            Route::view('/services', 'welcome')->name('services');
-            Route::view('/contacts', 'welcome')->name('contacts');
+                Route::view('/work','user.admin.work',compact('works'))->name('work');
+                Route::view('/work/create','user.admin.work_create')->name('work.create');
+                Route::post('/work/store','Work\WorkController@create')->name('work.store');
 
+
+                Route::view('/news_suggestion','user.admin.news_suggestions',compact('NewsSuggestions'))->name('NewsSuggestion');
+                Route::view('/news_suggestions/create','user.admin.news_suggestions_create')->name('NewsSuggestionCreate');
+                Route::post('/news_suggestions/store','NewsSuggestionsController@create')->name('news_suggestions.store');
+
+            });
 
             Route::post('/logout', [AdminController::class,'logout'])->name('logout');
         });
 
+
     });
+
+    // dd(auth()->user());
+    // Route::name('auth.')->group(function () {
+
+    //     Route::middleware('auth:admin')->name('admin.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:employer')->name('employer.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:guest')->name('guest.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:institution')->name('institution.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:lecturer')->name('lecturer.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:partner')->name('partner.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+    //     Route::middleware('auth:student')->name('student.')->group(function(){
+    //         Route::view('/', 'welcome')->name('main');
+    //         Route::view('/services', 'welcome')->name('services');
+    //         Route::view('/contacts', 'welcome')->name('contacts');
+    //         Route::view('/facultets', 'welcome')->name('facultets');
+    //         Route::view('/lessons', 'welcome')->name('lessons');
+    //         Route::view('/news', 'welcome')->name('news');
+    //     });
+
+
+    // });
+
+
+
+
+
+
     Route::prefix('student')->name('student.')->group(function () {
 
         Route::middleware(['guest:student'])->group(function () {
@@ -133,8 +220,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::view('/home', 'user.student.home',compact('students'))->name('home');
             Route::post('/logout', 'User\StudentController@logout')->name('logout');
             Route::view('/', 'welcome')->name('main');
-            Route::view('/services', 'welcome')->name('services');
-            Route::view('/contacts', 'welcome')->name('contacts');
         });
     });
 
@@ -218,7 +303,18 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
     });
 
+Route::middleware(['guest:student','guest:admin','guest:employer','guest:guest','guest:institution','guest:lecturer','guest:partner'])
+    ->group(function () {
 
+        Route::view('/', 'welcome')->name('main');
+        // Route::view('/services', 'welcome')->name('services');
+        // Route::view('/contacts', 'welcome')->name('contacts');
+        // Route::view('/facultets', 'welcome')->name('facultets');
+
+        Route::view('/login', 'user.login')->name('login');
+        Route::post('/login', 'Controller@login')->name('check');
+        Route::view('/register', 'user.register')->name('register');
+    });
 });
 
 

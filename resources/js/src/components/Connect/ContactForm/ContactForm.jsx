@@ -6,21 +6,12 @@ import styles from './ContactForm.module.css'
 
 
 const ContactForm = (props) => {
-    const setBlackMode = () => {
-        props.changeColorMode(false)
-    }
 
-    const setWhiteMode = () => {
-        props.changeColorMode(true)
-    }
 
     return (
         <div>
-            <div>
-                <button onClick={setBlackMode}>Black</button>
-                <button onClick={setWhiteMode}>White</button>
-            </div>
-                {props.colorMode
+
+                {props.colorMode === "true"
                     ? <div className={styles.main_light}>
                         <Heading />
                         <ContactMethods />

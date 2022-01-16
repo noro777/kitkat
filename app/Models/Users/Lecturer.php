@@ -18,6 +18,7 @@ class Lecturer extends Authenticable
         'name',
         'email_or_phone',
         'password',
+        'image'
     ];
 
     protected $hidden = [

@@ -26,20 +26,23 @@ class InstitutionController extends Controller
         if(is_numeric($data['email_or_phone'])){
             return Validator::make($data, [
             'name'=>'required',
-            'email_or_phone'=>'required|unique:admins,email_or_phone',
-            'password'=>'required|confirmed'
+            'email_or_phone'=>'required|unique:institutions,email_or_phone',
+            'password'=>'required|confirmed',
+            'image'=>'required'
         ]);
         }else{
             return Validator::make($data, [
                 'name'=>'required',
-                'email_or_phone'=>'required|email|unique:admins,email_or_phone',
-                'password'=>'required|confirmed'
+                'email_or_phone'=>'required|email|unique:institutions,email_or_phone',
+                'password'=>'required|confirmed',
+                'image'=>'required'
             ]);
         };
     }
 
     protected function create(array $data)
     {
+        // dd($data['image']);
         return Institution::create([
             'name' => $data['raquest']['name'],
             'email_or_phone' => $data['raquest']['email_or_phone'],

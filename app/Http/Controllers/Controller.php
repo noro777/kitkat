@@ -23,7 +23,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     use AuthenticatesUsers;
-    
+
 
     // public function __construct()
     // {
@@ -79,7 +79,7 @@ class Controller extends BaseController
         //     return redirect()->route($u['category'].'.home');
         // }else{
 
-        //     return redirect()->route('login')->with('fail','sxal  parol');
+            // return redirect()->route('login')->with('fail','sxal  parol');
         // }
 
     // }

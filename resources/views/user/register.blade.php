@@ -1,7 +1,7 @@
 <a href="{{ route('admin.register') }}">
     admin
 </a>
-<a href="{{ route('student.register') }}">
+<a href="{{ route('student.register',['category'=>'lecturer']) }}">
     student
 </a>
 <a href="{{ route('employer.register') }}">
@@ -13,7 +13,7 @@
 <a href="{{ route('institution.register') }}">
     institution
 </a>
-<a href="{{ route('lecturer.register') }}">
+<a href="{{ route('lecturer.register',['category'=>'lecturer']) }}">
     lecturer
 </a>
 <a href="{{ route('partner.register') }}">

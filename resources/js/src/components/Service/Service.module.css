@@ -8,12 +8,15 @@
     src: url('./../../static/fonts/Arial\ AMU\ Bold.ttf');
     font-family: Arial AMU Bold;
 }
-
+@font-face{
+    src: url('../../static/fonts/arnamu.ttf');
+    font-family: arnamu;
+}
 
 .main{
     transition: 1s;
     background-color:black ;
-
+    width: 100%;
     /* height: 100%; */
     /* overflow-x: hidden; */
 }
@@ -26,6 +29,7 @@
     transition: 1s;  /*  */
     background-color: white;
     color: black;
+    width: 100%;
     /* overflow-x: hidden; */
     /* height: 100%; */
 }
@@ -44,7 +48,7 @@
 
 .service_paragraph_black{
     width: 49.75rem;
-    font-family: Arial AMU Bold;
+    font-family: arnamu;
     font-style: normal;
     font-weight: normal;
     font-size: 0.938rem;
@@ -68,8 +72,11 @@
     letter-spacing: 0.055em;
     color: black;
     min-height: 3.25rem;
+    
 }
-
+.service_name_black span{
+    width: 80%;
+}
 .text_style_black{
     font-family: Arial AMU Bold;
     font-style: normal;
@@ -88,19 +95,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.service_paragraph{
-    justify-content:center;
-    font-family: Arial AMU Bold;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.938rem;
-    line-height: 1.66rem;
-    position: relative;
-
-    letter-spacing: 0.055em;
-
-    /* color: black; */
 }
 .service_text {
     width: 31.25rem;
@@ -122,7 +116,7 @@
 }
 .service_paragraph{
     width: 49.75rem;
-    font-family: Arial AMU Bold;
+    font-family: arnamu;
     font-style: normal;
     font-weight: normal;
     font-size: 0.938rem;
@@ -187,13 +181,13 @@
 }
 
 .service_image_width{
-    width: 9.875rem;
-    height: 7.975rem;
+    width: 8.875rem;
+    height: 6.975rem
 }
 
 .service_image_width_black{
-    width: 9.875rem;
-    height: 7.975rem;
+    width: 8.875rem;
+    height: 6.975rem;
     filter: invert(100%);
     -webkit-filter: invert(100%);
 }
@@ -210,6 +204,9 @@
     letter-spacing: 0.055em;
     color: #FFFFFF;
     min-height: 3.25rem;
+}
+.service_name span {
+    width: 80%;
 }
 .service_button{
     display: flex;
@@ -496,7 +493,7 @@
         line-height: 1.103rem;
         position: relative;
         margin-bottom: 5rem;
-        margin-top: -7.5rem;
+        margin-top: -4.5rem;
     }
 
     .service_paragraph_black{
@@ -505,19 +502,19 @@
         line-height: 1.103rem;
         position: relative;
         margin-bottom: 5rem;
-        margin-top: -7.5rem;
+        margin-top: -4.5rem;
     }
 
     .service_h1_text h1{
         width: 3.125rem;
         font-size: 1.75rem;
-        margin-top: -3.125rem;
+        margin-top: 1.125rem;
     }
 
     .service_h1_text_black h1{
         width: 3.125rem;
         font-size: 1.75rem;
-        margin-top: -3.125rem;
+        margin-top: 1.125rem;
     }
 
     .width_container{
@@ -533,6 +530,7 @@
     .service_logo{
         width: 15.188rem;
         height: 13.938rem;
+        margin: 0 0 0 0;
     }
     .box{
         width: 22.5rem;
@@ -554,7 +552,7 @@
         margin-top: 0.625rem;
     }
     .service_paragraph_black{
-        width: 24.875rem;
+        width: 27.875rem;
         font-size: 0.75rem;
         line-height: 1.503rem;
         position: relative;
@@ -562,7 +560,7 @@
         margin-top: 0.625rem;
     }
     .width_container{
-        margin:0 5.563rem 0 5.625rem;
+        margin:10.625rem 5.563rem 0 5.625rem;
     }
 
 
@@ -583,26 +581,29 @@
 
 @media (max-width: 38.75rem){
     .main{
-        width: 41.875rem;
+        width: 100%;
     }
     .main_light{
-        width: 41.875rem;
+        width: 100%;
     }
     .services{
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-left: 5rem;
     }
     .width_container{
-        margin:0 5.625rem 0 5.625rem;
+        margin:10rem 5.625rem 0 5.625rem;
     }
     .service_logo{
         position: absolute;
         display: flex;
         align-items: flex-end;
-        width: 11.625rem;
-        height: 11.625rem;
-        margin-left: 28.75rem;
+        width: 15.625rem;
+        height: 15.625rem;
+        margin-right: 5rem;
+        margin-top: -17rem;
+        
     }
     .box{
         width: 22.5rem;
@@ -620,6 +621,7 @@
         position: relative;
         margin-bottom: 5rem;
         margin-top: 0.625rem;
+        margin-left: 1rem;
     }
     .service_paragraph_black{
         width: 24.75rem;
@@ -628,14 +630,20 @@
         position: relative;
         margin-bottom: 5rem;
         margin-top: 0.625rem;
+        margin-left: 1rem;
     }
     .service_h1_text h1{
         width: 3.125rem;
         font-size: 1.563rem;
+        margin-top: 20rem;
+        margin-left: 1rem;
+
     }
     .service_h1_text_black h1{
         width: 3.125rem;
         font-size: 1.563rem;
+        margin-top: 20rem;
+        margin-left: 1rem;
     }
         
     .other_service_width_continer{
@@ -645,7 +653,17 @@
         justify-content: center;
         
     }
-    
+    .service_text{
+        margin-top: 4.875rem;
+        margin-right: 5.125rem;
+    }
+    .text_style{
+        font-size: 1.75rem;
+        margin-right: 1.25rem;
+        margin-bottom: -31.25rem;
+        height: 3.125rem;
+
+    }
 }
 
 
@@ -653,34 +671,35 @@
 
 @media (max-width: 25.625rem){
     .main{
-        width: 27.8rem;
-        height: 590rem;
+        width: 100%;
+        height: 600rem;
     }
     .main_light{
-        width: 27.8rem;
-        height: 590rem;
+        width: 100%;
+        height: 600rem;
     }
     .service_logo{
         display: flex;
         align-items: flex-end;
         width: 12rem;
         height:12rem;
-        margin-right: 35rem;
+        margin-right: 5rem;
+        margin-top: 1.500rem;
         opacity: 1;
     }
     .services{
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
-        margin-left: 5rem;
+        /* margin-left: 5rem; */
     }
     .service_text{
-        margin-top: 1.875rem;
-        margin-right: 5.125rem;
+        margin-top: 10.875rem;
+        /* margin-right: 6.125rem; */
     }
     .text_style{
         font-size: 1.75rem;
-        margin-right: 1.25rem;
+        margin-right: -0.25rem;
         margin-bottom: -31.25rem;
         height: 3.125rem;
         margin-top: 6.25rem;
@@ -695,7 +714,7 @@
         /* margin-top: 8.125rem;
         margin-left: 25px; */
         margin: 7rem -0.100rem -3rem 0;
-        width: 25rem;
+        width: 18rem;
     }
 
     .width_container{
@@ -709,22 +728,27 @@
     .service_paragraph{
         width: 18.75rem;
         font-size: 0.75rem;
-        line-height: 150.3%;
+        line-height: 170.3%;
         position: relative;
         margin-bottom: 5rem;
         margin-top: 0.625rem;
+        margin-right: 1rem;
+        
     }
     .service_paragraph_black{
         width: 18.75rem;
         font-size: 0.75rem;
-        line-height: 150.3%;
+        line-height: 170.3%;
         position: relative;
         margin-bottom: 5rem;
-        margin-top: 0.625rem;
+        margin-right: 1rem;
+
     }
     .service_h1_text h1{
         width: 3.125rem;
         font-size: 1.563rem;
+        margin-top: 4rem;
+        margin-left:2rem;
     }
     .service_h1_text {
         width: 3.125rem;
@@ -732,12 +756,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 12.5rem;
+
     }
 
     .service_h1_text_black h1{
         width: 3.125rem;
         font-size: 1.563rem;
+        margin-top: 4rem;
+        margin-left:2rem;
     }
     .service_h1_text_black {
         width: 3.125rem;
@@ -745,7 +771,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 12.5rem;
+
     }
     .other_service_container{
         display: flex;
@@ -771,38 +797,44 @@
 
 @media (max-width:20rem){
     .main{
-        width: 30rem;
-        height: 715rem;
+        width: 100%;
+        height: 560rem;
     }
     .service_logo{
-        margin:-1rem 6rem 0px 0px;
+        margin:2rem 6rem 0px 0px;
     }
     .main_light{
-        width: 30rem;
-        height: 715rem;
+        width: 100%;
+        height: 560rem;
     }
     .service_text{
         display: flex;
         justify-content: center;
+        width: 133%;
         /* margin-right: 15rem; */
-        margin-top: 3rem;
+        margin-top:15rem;
+        margin-right: 5.6rem;
     }
     .text_style{
-        margin-top: 10rem;
+        margin-top: 5rem;
+        font-size: 1.50rem;
+        margin-right: 0.3rem;
+        margin-bottom: -31.25rem;
+        height: 3.125rem;
     }
     .service_paragraph{
-        width: 28rem;
+        width: 19rem;
         font-weight: 1rem;
-        font-size: 1rem;
+        font-size: 0.800rem;
     }
     .service_paragraph_black{
-        width: 28rem;
+        width: 19rem;
         font-weight: 1rem;
-        font-size: 1rem;
+        font-size: 0.800rem;
     }
     .box{
-        width: 28rem;
-        height: 26rem;
+        width: 18rem;
+        height: 19rem;
         /* margin-left: 1.625rem; */
         /* margin-top: 8.125rem;
         margin-left: 25px; */
@@ -810,17 +842,17 @@
         width: 27rem;
     }
     .width_container{
-        width:32.75rem;
-        margin:8rem 5.563rem 0 5.625rem;
+        width:18.75rem;
+        margin:-2rem 5.650rem 0 5.625rem;
     }
     .other_service_width_continer{
-        width: 32rem;
-        margin-top: 2.813rem;
+        width: 18.75rem;
+        margin:-1rem 5.650rem 0 5.625rem;
 
     }
 
     .service_button_size{
         width: 12.7rem;
-        height: 3.75rem;
+        height: 2.75rem;
     }
 }

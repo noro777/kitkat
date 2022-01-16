@@ -2,7 +2,8 @@
 @section('student')
 
 <div>
-    <img src="{{asset('images/'.auth()->user()->image) }}">
+    {{-- {{ dd(auth()->user()->image) }} --}}
+    <img src="{{asset('images/student/'.auth()->user()->image) }}">
 </div>
 
 <form action="{{ route('student.logout') }}" method="POST">

@@ -1,18 +1,13 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import './QRCode.css';
-import qr from '../../../../../../public/images/QR.svg'
+import qr from './../../../static/images/QR/QR.svg'
 import { connect } from 'react-redux';
-import axios from 'axios';
-
-
-
-
+import { getColor } from '../../../store/reselect/theme-reselect';
 
 const QRCode = (props) => {
-
     return (
         <div>
-            {props.colorMode
+            {props.colorMode === "true"
                 ? <section className="QR">
                     <div className="QRTitleBlack">Կրկնորինակիր QR Կոդը, և ստացիր մեր բոլոր տվյալները քո Բջջայինի մեջ</div>
                     <div className="QRCode">
@@ -22,7 +17,7 @@ const QRCode = (props) => {
                 : <section className="QR">
                     <div className="QRTitle">Կրկնորինակիր QR Կոդը, և ստացիր մեր բոլոր տվյալները քո Բջջայինի մեջ</div>
                     <div className="QRCode">
-                         <img src={qr} alt="QR" className="QRcodeImageBlack" />
+                        <img src={qr} alt="QR" className="QRcodeImage" />
                     </div>
                 </section>
             }
@@ -33,7 +28,7 @@ const QRCode = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        colorMode: state.service.colorMode
+        colorMode: getColor(state)
     }
 }
 

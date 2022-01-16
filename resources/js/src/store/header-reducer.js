@@ -1,20 +1,13 @@
-const CALL_WINDOW_TOGGLE ="CALL_WINDOW_TOGGLE"
-
-let initialState ={
-    callWindowStatus:false
-}
-
-export const headerReducer = (state = initialState, action) => {
+function headerReducer(state={}, action){
     switch(action.type){
-        case CALL_WINDOW_TOGGLE:{
+        case "toggleCallWindow":{
             return{
-                ...state,
-                callWindowStatus:action.payload,
+                callWindow:action.payload
             }
         }
-        default:
-            return state
     }
+
+    return state
 }
 
-export const callWindowToggleAC = (payload) => ({ type: CALL_WINDOW_TOGGLE, payload })
+export default headerReducer;

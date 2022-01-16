@@ -25,14 +25,16 @@ class PartnerController extends Controller
         if(is_numeric($data['email_or_phone'])){
             return Validator::make($data, [
             'name'=>'required',
-            'email_or_phone'=>'required|unique:admins,email_or_phone',
-            'password'=>'required|confirmed'
+            'email_or_phone'=>'required|unique:partners,email_or_phone',
+            'password'=>'required|confirmed',
+            'image'=>'required'
         ]);
         }else{
             return Validator::make($data, [
                 'name'=>'required',
-                'email_or_phone'=>'required|email|unique:admins,email_or_phone',
-                'password'=>'required|confirmed'
+                'email_or_phone'=>'required|email|unique:partners,email_or_phone',
+                'password'=>'required|confirmed',
+                'image'=>'required'
             ]);
         };
     }

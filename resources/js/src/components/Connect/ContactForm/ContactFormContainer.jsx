@@ -1,23 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import ContactForm from "./ContactForm";
-import {changeColorMode} from './../../../store/contact-reducer'
+import {setColorModeAC} from './../../../store/theme-color.js'
+import { getColor } from "../../../store/reselect/theme-reselect";
 
 class ContactFormContainer extends React.Component{
     componentDidMount(){
-        this.props.changeColorMode(this.props.colorMode)
+        this.props.setColorModeAC(this.props.colorMode)
     }
 
     componentDidUpdate(prevProps, prevState){
         if(prevProps.color !== this.props.colorMode){
-            this.props.changeColorMode(this.props.colorMode)
+            this.props.setColorModeAC(this.props.colorMode)
         }
 
     }
 
 
     render(){
-        return <ContactForm {...this.props} changeColorMode={this.props.changeColorMode} />
+        return <ContactForm {...this.props} setColorModeAC={this.props.setColorModeAC} />
     }
 }
 
@@ -25,8 +26,8 @@ class ContactFormContainer extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        colorMode: state.service.colorMode
+        colorMode: getColor(state)
     }
 }
 
-export default connect(mapStateToProps, {changeColorMode})(ContactFormContainer)
+export default connect(mapStateToProps, {setColorModeAC})(ContactFormContainer)

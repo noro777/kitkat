@@ -1,96 +1,99 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React,{useState, useEffect} from 'react';
+import axios from "axios";
+import { useDispatch , useSelector} from 'react-redux';
 import { connect } from 'react-redux';
 import { getColor } from '../../../../../store/reselect/theme-reselect';
 import { setColorModeAC } from '../../../../../store/theme-color';
 
 import './Form.css';
 
-
 const Form = (props) => {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setmessage] = useState("");
+    const [nameState,setNameState] = useState("")
+    const [emailState,setEmailState] = useState("")
+    const [textState,setTextState] = useState("")
+    const [confirmStatus, setConfirmStatus] = useState("")
+    const [statusColor, setStatusColor] = useState("")
+    const dispatch = useDispatch()
+    // const [styles,setStyles] = useState({})
+//     const modeStatus = useSelector(function(state){
+//          return state.modeStatus
+//    })
 
-function Name(event){
-    setName(event.target.value)
-}
-function Email(event){
-    setEmail(event.target.value)
-}
-function Message(event){
-    setmessage(event.target.value)
-}
+//    useEffect(() => {
+//       if(modeStatus.modeStatus === "dark"){
+//          setStyles(modeTheme.palette.dark)
+//      }
+//      else if(modeStatus.modeStatus === "light"){
+//          setStyles(modeTheme.palette.light)
+//          console.log(styles);
+//      }
+//    }, [modeStatus])
 
-function f(e){
 
-    e.preventDefault();
-    // console.log(state)
-    axios.post('/contact', {
-        "name":name,
-        "email":email,
-        "message":message
-    })
-       .then(
-            response => {
-                console.log(response.data)
-                alert(response.data)
-            }
-        )
-        .catch(error => {
-        console.log("ERROR:: ",error.response.data);
+    function changeName(event){
+        setNameState(event.target.value)
+    }
 
-    });
-}
+    function changeEmail(event){
+        setEmailState(event.target.value)
+    }
 
+    function changeText(event){
+        setTextState(event.target.value)
+    }
+
+    function submitMessage(event){
+       
+    }
 
     return (
         <div>
-        {props.colorMode
+        {props.colorMode === "true"
         ?
-        <form>
+        <form method="post">
         <section className="form">
             <div className="formInfo">
                 <div className="formInputFiled filedBlack">
-                    <input type="text" name="name" id="fullName" onChange={Name} placeholder="Անուն Ազգանուն" />
+                    <input onChange={changeName} type="text" name="fullName" id="fullName" placeholder="Անուն Ազգանուն" />
                 </div>
                 <div className="formInputFiled filedBlack">
-                    <input type="email" name="email" id="email" onChange={Email} placeholder="Էլ-փոստ" />
+                    <input type="email" onChange={changeEmail}  name="email" id="email" placeholder="Էլ-փոստ" />
                 </div>
             </div>
             <div className="formMessage">
                 <div className="formTextFiled filedBlack">
-                    <textarea name="message" id="message" cols="30" onChange={Message} rows="10" placeholder="Հաղորդագրություն"></textarea>
+                    <textarea name="message" onChange={changeText} id="message" cols="30" rows="10" placeholder="Հաղորդագրություն"></textarea>
                 </div>
-                <input type="submit" onClick={f} value="Ուղարկել" name="submit" id="submit" className="formSubmit" />
-
+                <p id="statusP" style={{color:statusColor}}>
+                {confirmStatus}
+                </p>
+                <input type="submit" onClick={submitMessage} value="Ուղարկել" name="submit" id="submit" className="formSubmit" />
             </div>
-
         </section>
-     </form>
+    </form>
         :
-        <form>
+        <form method="post">
         <section className="form">
             <div className="formInfo">
-
                 <div className="formInputFiled filed">
-                    <input type="text" name="fullName" id="name" onChange={Name} placeholder="Անուն Ազգանուն" />
+                    <input type="text"  onChange={changeName} name="fullName" id="fullName" placeholder="Անուն Ազգանուն" />
                 </div>
                 <div className="formInputFiled filed">
-                    <input type="email" name="email" id="email" onChange={Email} placeholder="Էլ-փոստ" />
+                    <input type="email" name="email" onChange={changeEmail}   id="email" placeholder="Էլ-փոստ" />
                 </div>
             </div>
             <div className="formMessage">
                 <div className="formTextFiled filed">
-                    <textarea name="message" id="message" cols="30" rows="10" onChange={Message} placeholder="Հաղորդագրություն"></textarea>
+                    <textarea name="message" id="message" onChange={changeText} cols="30" rows="10" placeholder="Հաղորդագրություն"></textarea>
                 </div>
-                    <input type="submit" onClick={f} value="Ուղարկել" name="submit" id="submit" className="formSubmit" />
+                <p id="statusP" style={{color:statusColor}}>
+                {confirmStatus}
+                </p>
+                <input type="submit" value="Ուղարկել" onClick={submitMessage} name="submit" id="submit" className="formSubmit" />
             </div>
-
         </section>
-
-     </form>
+    </form>
         }
         </div>
 

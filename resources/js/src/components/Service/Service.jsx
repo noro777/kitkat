@@ -5,13 +5,7 @@ import styles from './Service.module.css'
 
 const Service = (props) => {
 
-    const setLightMode = () => {
-        props.setColorModeAC(true)
-    }
 
-    const setBlackMode = () => {
-        props.setColorModeAC(false)
-    }
 
 
 
@@ -73,11 +67,7 @@ const Service = (props) => {
 
     return (
         <main >
-            <div>
-                <button onClick={setBlackMode}>Dark</button>
-                <button onClick={setLightMode}>Light</button>
-            </div>
-            {props.colorMode ?
+            {props.colorMode === "true" ?
                 <div className={styles.main_light}>
                     <div className={styles.services}>
 

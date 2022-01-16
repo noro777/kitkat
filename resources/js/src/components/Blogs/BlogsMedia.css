@@ -1,0 +1,22 @@
+/*1860*/
+@media (max-width: 1830px) {
+    .text1 {
+      width: 45%;
+    }
+  }
+  
+  
+  /*1780*/
+  @media (max-width: 1780px) {
+      
+      .main_part1 {
+          display: flex;
+          justify-content: center;
+      }
+      .text1 {
+          margin-right: 80px;
+      }
+  }
+  
+  
+  /*1720*/

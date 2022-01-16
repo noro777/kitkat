@@ -1,0 +1,316 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+@font-face{
+    font-family: Arial AMU;
+    src: url('../../static/fonts/Arial\ AMU\ Bold.ttf');
+}
+@font-face{
+    font-family: arnamu;
+    src: url('../../static/fonts/arnamu.ttf');
+}
+.main_background{
+    background-color: black;
+    color: white;
+}
+.section1{
+    display: grid;
+    grid-template-columns: 200px 3px 814px 38px 627px 240px;
+    grid-template-rows: 143px 73px 74px 50px 254px 171px;
+}
+.facultets_text{
+    grid-area: 3 / 2  / 3 / 4;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+}
+.facultets_paragraph{
+    grid-area: 5 / 3 ;
+    width: 842px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: arnamu;
+    letter-spacing: 0.155em;
+
+}
+
+.main_image{
+    grid-area: 1 / 5 ;
+    background-image: url('../../static/images/Facultet/fak1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 627px;
+    height: 587px;
+}
+.section2{
+    display: grid;
+    background-color: black;
+    grid-template-columns: 227px 40px 92px 245px 200px 45px 65px 95px 85px 200px 25px 55px 10px 150px 250px ;
+    grid-template-rows: 73px 6px 88px 1px 50px;
+}
+.web_image{
+    grid-area: 1 /4;
+    width:133px;
+    background-image: url('../../static/images/Facultet/2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.web_hr {
+    grid-area: 4 / 2 / 4 / 5;
+    border: 1px solid #FF4B4B;
+}
+.category_text{
+    grid-area: 3 / 3 / 3 / 5;
+    width: 303px;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 0.055em;
+}
+.category_text:hover{
+    cursor: pointer;
+    color: #FF4B4B;
+}
+.programming_text{
+    grid-area:  3 / 7 / 3 / 8;
+    width: 214px;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 0.055em;
+
+}
+.programming_text:hover{
+    color: #0A8100;
+    cursor: pointer;
+}
+.multimedia_text{
+    width: 203px;
+    grid-area: 3 / 12 / 3 / 14 ;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 134.8%;
+    /* or 34px */
+
+    text-align: center;
+    letter-spacing: 0.055em;
+
+
+}
+.multimedia_text:hover{
+    color:#CC9300;
+    cursor: pointer;
+}
+.category_text_active{
+    grid-area: 3 / 3 / 3 / 5;
+    width: 303px;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 0.055em;
+    color: #FF4B4B;
+    cursor: pointer;
+}
+
+.programming_text_active{
+    grid-area:  3 / 7 / 3 / 8;
+    width: 214px;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 0.055em;
+    color: #0A8100;
+    cursor: pointer;
+}
+
+.multimedia_text_active{
+    grid-area: 3 / 12 / 3 / 14 ;
+    width: 203px;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 134.8%;
+    /* or 34px */
+
+    text-align: center;
+    letter-spacing: 0.055em;
+    color: #CC9300;
+    cursor: pointer;
+}
+.programming_image{
+    grid-area: 1 /8;
+    width:75px;
+    background-image: url('../../static/images/Facultet/3.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.programming_hr{
+    grid-area: 4 / 6 / 4 / 9;
+    width: 291px;
+    border: 1px solid #0A8100;
+}
+
+.multimedia_image{
+    grid-area: 1 / 13;
+    width: 75px;
+    background-image: url('../../static/images/Facultet/4.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.multimedia_hr{
+    grid-area: 4 / 11 / 4 / 13;
+    width: 250px;
+    border: 1px solid #CC9300;;
+}
+.section3{
+    display: grid;
+    grid-template-columns: 200px 5px 15px 40px 259px 503px 10px 25px 113px 19px 19px;
+    grid-template-rows: 35px 5px 5px  23px 10px 23px 10px 23px 10px ;
+}
+.section3_image{
+    width: 38px;
+    grid-area: 1 / 2 / 2 / 4;
+    background-image: url('../../static/images/Facultet/5.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.section3_menu{
+    grid-area: 3 / 3 / 10 / 6;
+    background: rgba(54, 54, 54, 0.7);
+
+    border-radius: 10px;
+}
+.input_1 {
+    grid-area: 4 / 4 /4 / 4;
+    justify-self: center;
+    align-self: center;
+}
+.input_2 {
+    grid-area: 6 / 4 /6 / 4;
+    justify-self: center;
+    align-self: center;
+}
+.input_3 {
+    grid-area: 8 / 4 / 8 / 4;
+    justify-self: center;
+    align-self: center;
+}
+
+.first_text{
+    grid-area: 4 / 5 / 4 / 5;
+    font-family: arnamu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.055em;
+    /* justify-self: center; */
+    align-self: center;
+}
+
+.input_1_hr{
+    grid-area: 5 / 5 / 5 / 5;
+    width: 208px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-0.28deg);
+}
+.input_1_hr_active{
+    grid-area: 5 / 5 / 5 / 5;
+    width: 208px;
+    transform: rotate(-0.28deg);
+    border-top: 1px solid #FFFFFF;
+}
+.input_2_hr{
+    grid-area: 7 / 5 / 7 / 5;
+    width: 208px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-0.28deg);
+}
+.input_2_hr_active{
+    grid-area: 7 / 5 / 7 / 5;
+    width: 208px;
+    border-top: 1px solid #FFFFFF;
+    transform: rotate(-0.28deg);
+}
+.input_3_hr{
+    grid-area: 9 / 5 / 9 / 5;
+    width: 208px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-0.28deg);
+}
+.input_3_hr_active{
+    grid-area: 9 / 5 / 9 / 5;
+    width: 208px;
+    border-top: 1px solid #FFFFFF;
+    transform: rotate(-0.28deg);
+}
+.second_text{
+    grid-area: 6 / 5 / 6 / 5;
+    font-family: arnamu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.055em;
+    /* justify-self: center; */
+    align-self: center;
+}
+
+.third_text{
+    grid-area: 8 / 5 / 8 / 5;
+    font-family: arnamu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.055em;
+    /* justify-self: center; */
+    align-self: center;
+}
+
+.facultets_text_category{
+    grid-area: 1 / 9 / 1 / 9;
+    font-family: Arial AMU;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    /* or 24px */
+
+    letter-spacing: 0.055em;
+}
+
+.facultets_category_menu{
+    grid-area: 2 / 7 /  10/ 11;
+    background: rgba(54, 54, 54, 0.7);
+    border-radius: 10px;
+}
+.input_4{
+    grid-area: 4 / 8 / 4 / 8;
+    justify-self: center;
+    align-self: center;
+}
+.input_5{
+    grid-area: 6 / 8 / 6 / 8;
+    justify-self: center;
+    align-self: center;
+}
+.input_6{
+    grid-area: 8 / 8 / 8 / 8;
+    justify-self: center;
+    align-self: center;
+}

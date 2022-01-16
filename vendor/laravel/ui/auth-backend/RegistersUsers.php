@@ -35,34 +35,37 @@ trait RegistersUsers
      */
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
-        // dd($request->all());
+
+        // $this->validator($request->all())->validate();
+        
+        return $request;
+        $x = $request->all();
         if($request->hasFile('image')){
+            return false;
             $image      = $request->file('image');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('images',$fileName);
+            $image->move('images/'.$x['category'],$fileName);
 
         event(new Registered($user = $this->create([
                     "raquest"=>$request->all(),
                     "image"=>$fileName
                 ])));
         }else{
+            return true;
             event(new Registered($user = $this->create($request->all())));
 
         }
 
-
-
-
-        $this->guard()->login($user);
+        // $this->guard()->login($user);
 
         // if ($response = $this->registered($request, $user)) {
         //     return $response;
         // }
 
-        return $request->wantsJson()
-                    ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
+        return "gago";
+        // return $request->wantsJson()
+        //             ? new JsonResponse([], 201)
+        //             : redirect($this->redirectPath());
     }
 
     /**

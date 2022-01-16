@@ -54,7 +54,7 @@ function Services(  ){
          if(windowWidth < 780){
             setWidthState("100%")
           }
-         if(windowWidth < 500){
+         if(windowWidth < 700){
             console.log("very small");
             var servicesCont = $("#services_cont")
             var listsBox = $("#lists_box")
@@ -66,8 +66,8 @@ function Services(  ){
             var list4 = $("#list_4")
             var list5 = $("#list_5")
             var list6 = $("#list_6")
-            listsBox.css({"flex-direction":"column","height":"80%"})
-            otherBox.css({"height":"20%"})
+            listsBox.css({"flex-direction":"column","height":"1500px"})
+            otherBox.css({"height":"500px"})
             otherLists.css({"flex-direction":"column"})
             list1.css({"width":"100%","height":"33%"})
             list2.css({"width":"100%","height":"33%"})
@@ -78,11 +78,10 @@ function Services(  ){
           }
          window.addEventListener("resize", function(){
           var windowWidth = window.innerWidth
-          if(windowWidth < 950 && windowWidth > 700){
-            console.log('middle');
+          if(windowWidth < 1100 && windowWidth > 700){
             setFontSizing("12px")
           }
-          else if(windowWidth >= 950){
+          else if(windowWidth >= 1100){
             setFontSizing("14px")
           }
           else if(windowWidth < 700 && windowWidth > 570){
@@ -94,28 +93,28 @@ function Services(  ){
           if(windowWidth < 780){
             setWidthState("100%")
           }
-          if(windowWidth < 500){
-            var servicesCont = $("#services_cont")
-            servicesCont.css({"left":"-20%"})
-            var listsBox = $("#lists_box")
-            var otherBox = $("#other_box")
-            var otherLists = $("#other_lists_box")
-            var list1 = $("#list_1")
-            var list2 = $("#list_2")
-            var list3 = $("#list_3")
-            var list4 = $("#list_4")
-            var list5 = $("#list_5")
-            var list6 = $("#list_6")
-            listsBox.css({"flex-direction":"column","height":"76%"})
-            otherBox.css({"height":"23%"})
-            otherLists.css({"flex-direction":"column"})
-            list1.css({"width":"100%","height":"33%"})
-            list2.css({"width":"100%","height":"33%"})
-            list3.css({"width":"100%","height":"33%"})
-            list4.css({"width":"100%","height":"60%"})
-            list5.css({"width":"100%","height":"40%"})
-            list6.css({"width":"100%","height":"0%"})
-          }
+          // if(windowWidth < 700){
+          //   console.log("very small");
+          //   var servicesCont = $("#services_cont")
+          //   var listsBox = $("#lists_box")
+          //   var otherBox = $("#other_box")
+          //   var otherLists = $("#other_lists_box")
+          //   var list1 = $("#list_1")
+          //   var list2 = $("#list_2")
+          //   var list3 = $("#list_3")
+          //   var list4 = $("#list_4")
+          //   var list5 = $("#list_5")
+          //   var list6 = $("#list_6")
+          //   listsBox.css({"flex-direction":"column","height":"1500px"})
+          //   otherBox.css({"height":"500px"})
+          //   otherLists.css({"flex-direction":"column"})
+          //   list1.css({"width":"100%","height":"33%"})
+          //   list2.css({"width":"100%","height":"33%"})
+          //   list3.css({"width":"100%","height":"33%"})
+          //   list4.css({"width":"100%","height":"60%"})
+          //   list5.css({"width":"100%","height":"40%"})
+          //   list6.css({"width":"100%","height":"0%"})
+          // }
       })
    }, [])
    
@@ -129,20 +128,20 @@ function Services(  ){
          ref={servicesCont}
          id="services_cont"
          width="600%"
-         height="1400%"
-         sx={{backgroundColor:theme.palette.background.dark,position:"absolute",top:"95%",borderRadius:"15px",opacity:"0",transition:"0.5s",zIndex:2,p:2}}>
+         height="1600%"
+         sx={{backgroundColor:theme.palette.background.dark,position:"absolute",overflowY:"scroll",top:"95%",borderRadius:"15px",opacity:"0",transition:"0.5s",zIndex:2,p:2}}>
             
             {/* three columns box */}
             <Box
              id="lists_box"
-             height="50%"
+             height="80%"
              width="100%"
              display="flex"
-             sx={{justifyContent:"space-between"}}>
+             sx={{justifyContent:"space-between",mb:3}}>
                {/* list 1 */}
                <List
                   id="list_1"
-                  sx={{width:"30%", height:"100%",margin:0,padding:0}}>
+                  sx={{width:"30%", height:"60%",margin:0,padding:0}}>
                   <Link href="#">
                     <ListItem
                       sx={{borderBottom:`2px solid ${theme.palette.underline.main}`,overflow:"hidden",height:"70px",display:"flex",justifyContent:"space-between",position:"relative",color:theme.palette.underline.main,cursor:"pointer","&:hover":{color:"white",borderBottom:`2px solid white`},"&:hover img":{filter:"brightness(150%)"}}}>
@@ -447,7 +446,7 @@ function Services(  ){
              {/* two columns box  */}
             <Box
              width="100%"
-             height="40%"
+             height="100%"
              id="other_box"
              sx={{pt:3}}
             >

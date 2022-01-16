@@ -15,6 +15,7 @@ class Employer extends Authenticable
         'name',
         'email_or_phone',
         'password',
+        'image'
     ];
 
     protected $hidden = [

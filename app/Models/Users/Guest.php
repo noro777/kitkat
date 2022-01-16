@@ -14,6 +14,7 @@ class Guest extends Authenticable
         'name',
         'email_or_phone',
         'password',
+        'image'
     ];
 
     protected $hidden = [
