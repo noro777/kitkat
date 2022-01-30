@@ -68,7 +68,7 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="{{ route('register') }}">der grancvac chi</a>
+                        {{--  <a href="{{ route('register') }}">der grancvac chi</a>  --}}
                     </form>
                 </div>
             </div>

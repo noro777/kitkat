@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Route;
 
 
 
@@ -44,16 +45,19 @@ class EmployerController extends Controller
 
     protected function validator(array $data){
         if(is_numeric($data['email_or_phone'])){
+
             return Validator::make($data, [
-            'name'=>'required',
-            'email_or_phone'=>'required|unique:employers,email_or_phone',
+            'name'=>'required|max:250|min:6',
+            'email_or_phone'=>'required|unique:employers,email_or_phone|unique:students,email_or_phone|unique:guests,email_or_phone|unique:institutions,email_or_phone|unique:partners,email_or_phone|unique:lecturers,email_or_phone',
             'password'=>'required|confirmed',
             'image'=>'required'
         ]);
+
         }else{
+            dd($data);
             return Validator::make($data, [
                 'name'=>'required',
-                'email_or_phone'=>'required|email|unique:employers,email_or_phone',
+                'email_or_phone'=>'required|email|unique:employers,email_or_phone|unique:students,email_or_phone|unique:guests,email_or_phone|unique:institutions,email_or_phone|unique:partners,email_or_phone|unique:lecturers,email_or_phone',
                 'password'=>'required|confirmed',
                 'image'=>'required'
             ]);
@@ -70,6 +74,17 @@ class EmployerController extends Controller
             'password' => Hash::make($data['raquest']['password']),
             'image'=>$data['image']
         ]);
+    }
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $employers = Employer::where('name','LIKE','%'.$request . '%')
+        ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return Route::view('/freelancer','user.admin.employer',compact('employers'));
     }
 
 

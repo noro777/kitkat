@@ -12,10 +12,25 @@ class FreelanceController extends Controller
         $data = $request->validate([
             'description'=>'required',
             'field'=>'required',
+            'cost'=>'required'
         ]);
 
         Freelance::create($data);
         return redirect()->route('admin.freelance');
 
     }
+
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $freelances = Freelance::where('description','LIKE','%'.$request . '%')
+        // ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return view('user.admin.freelance',compact('freelances'));
+    }
 }
+
+

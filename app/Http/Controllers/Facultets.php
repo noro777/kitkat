@@ -18,7 +18,7 @@ class Facultets extends Controller
         if($request->hasFile('image')){
             $image      = $request->file('image');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('images',$fileName);
+            $image->move('images/facultets',$fileName);
             $data['image']  = $fileName;
 
             ModelsFacultets::create($data);
@@ -26,5 +26,16 @@ class Facultets extends Controller
             ModelsFacultets::create($data);
         }
         return redirect()->route('admin.facultets',);
+    }
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $facultets = ModelsFacultets::where('name','LIKE','%'.$request . '%')
+        // ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return view('user.admin.facultets',compact('facultets'));
     }
 }

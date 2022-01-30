@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Route;
 
 
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Validator;
 class StudentController extends Controller
 {
     use RegistersUsers;
-    protected $redirectTo = '/student/home';
+    // protected $redirectTo = '/student/home';
     // public function __construct()
     // {
     //     $this->middleware('guest:admin');
@@ -29,13 +30,13 @@ class StudentController extends Controller
         if(is_numeric($data['email_or_phone'])){
             return Validator::make($data, [
             'name'=>'required',
-            'email_or_phone'=>'required|unique:students,email_or_phone',
+            'email_or_phone'=>'required|unique:employers,email_or_phone|unique:students,email_or_phone|unique:guests,email_or_phone|unique:institutions,email_or_phone|unique:partners,email_or_phone|unique:lecturers,email_or_phone',
             'password'=>'required|confirmed'
         ]);
         }else{
             return Validator::make($data, [
                 'name'=>'required',
-                'email_or_phone'=>'required|email|unique:students,email_or_phone',
+                'email_or_phone'=>'required|email|unique:employers,email_or_phone|unique:students,email_or_phone|unique:guests,email_or_phone|unique:institutions,email_or_phone|unique:partners,email_or_phone|unique:lecturers,email_or_phone',
                 'password'=>'required|confirmed'
             ]);
         };
@@ -69,5 +70,20 @@ class StudentController extends Controller
             ? new JsonResponse([], 204)
             : redirect('/');
     }
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $students = Student::where('name','LIKE','%'.$request . '%')
+        ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return Route::view('/student','user.admin.student',compact('students'));
+    }
+
+
+
+
 }
 

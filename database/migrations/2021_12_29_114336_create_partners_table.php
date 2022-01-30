@@ -27,6 +27,7 @@ class CreatePartnersTable extends Migration
             $table->string('password');
             $table->string('category')->default('partner');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

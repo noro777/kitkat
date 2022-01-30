@@ -30,9 +30,11 @@
                             </div>
                         </div>
 
+                        <label for="image" class="col-md-4 col-form-label text-md-end">image</label>
                         <input id="image" type="file"  name="image"  >
 
                         <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">type</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="type"   >

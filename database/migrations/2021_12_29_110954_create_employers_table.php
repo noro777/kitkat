@@ -22,6 +22,7 @@ class CreateEmployersTable extends Migration
             $table->string('password');
             $table->string('category')->default('employer');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,4 +18,15 @@ class WorkController extends Controller
         return redirect()->route('admin.work');
 
     }
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $works = Work::where('description','LIKE','%'.$request . '%')
+        // ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return view('user.admin.work',compact('works'));
+    }
 }

@@ -27,6 +27,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('password');
             $table->string('category')->default('institution');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

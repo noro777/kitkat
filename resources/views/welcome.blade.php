@@ -11,26 +11,40 @@
 
     </head>
     <body>
+        {{--  {{ dd( Auth::user()) }}  --}}
+        {{--  {{ dd($data) }}  --}}
+        @if (Route::has('login'))
+
+        @foreach ($datas as $data)
+        {{--  {{ dump($data) }}  --}}
+            @auth($data)
+                    {{ Auth::guard($data)->user()->name }}
+                @break
+            @endauth
+        @endforeach
+
+        @endif
+        @auth($data)
+            @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @endif
+        @endauth
+
+
+
+
+            {{--  @yield('student')  --}}
+
+
 
         <div id="root">
         </div>
 
 
-            @if (Route::has('login'))
-
-                    @auth
-                        {{ auth()->user() }}
-
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-            @endif
 
 
-            @yield('student')
     </body>
 
     <script src="/js/index.js"></script>

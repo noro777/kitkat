@@ -22,6 +22,7 @@ class CreateLecturersTable extends Migration
             $table->string('password');
             $table->string('category')->default('lecturer');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

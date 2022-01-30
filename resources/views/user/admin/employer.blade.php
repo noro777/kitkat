@@ -1,22 +1,3 @@
-{{-- <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">email_or_phone</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($employers as $employer)
-    <tr>
-        <th scope="row">1</th>
-        <td>{{ $employer->name }}</td>
-        <td>{{ $employer->email_or_phone }}</td>
-      </tr>
-        @endforeach
-
-    </tbody>
-  </table> --}}
 
   <!DOCTYPE html>
   <html lang="en">
@@ -25,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
+
 
       <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -52,54 +34,88 @@
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<style>
+
+          {{--  form{
+            display: flex;
+            justify-content: flex-end;
+          },  --}}
+          .containrrrr{
+
+            display: flex;
+            justify-content:space-between;
+          }
+
+      </style>
+
   </head>
   <body>
-      <div class="col-md-6">
-<div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Condensed Full Width Table</h3>
+      <div class="container">
+<div class="containrrrr">
+    <div>
+        <a href="{{ route('admin.home') }}" class="btn btn-primary">back</a>
+        <a href="{{ route('employer.register') }}" class="btn btn-primary">cteate</a>
     </div>
-    <!-- /.card-header -->
-    <div class="card-body p-0">
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th style="width: 10px">#</th>
-            <th>Name</th>
-            <th>email_or_phone</th>
-            <th>image</th>
 
 
-            {{-- <th style="width: 40px">Label</th> --}}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            @foreach ($employers as $employer)
-            <td>{{ $employer->id }}</td>
-            <td>{{ $employer->name }}</td>
-            <tr>
-                <img src="{{ asset('images/'.$employer->image) }}"></img>
-              </tr>
+    <form action="{{ route('admin.employer.search') }}" method="POST" >
+                    @csrf
+                <input type="search"  placeholder="Search" name="search" required value="{{ old('search') }}" aria-label="Search" aria-describedby="search-addon" />
+                <span id="search-addon">
+                    <button type="submit"><i class="fas fa-search"> </i></button>
 
-            @endforeach
+                </span>
+                </form>
+</div>
+        {{--  <div class="input-group rounded">  --}}
 
 
-            {{-- <td>
-              <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-              </div>
-            </td>
-            <td><span class="badge bg-danger">55%</span></td> --}}
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- /.card-body -->
-  </div>
+          {{--  </div>  --}}
 
+
+
+        <div class="row">
+          <div class="col-12">
+               @if($employers->isNotEmpty())
+              <table class="table table-image">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col"> Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">update</th>
+                    <th scope="col">delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($employers as $employer)
+                  <tr>
+                    <th scope="row">{{ $employer->id }}</th>
+                    <td class="w-25">
+                        <img src="{{ asset('images/employer/'.$employer->image) }}" class="img-fluid img-thumbnail w-50" alt="Sheep">
+                    </td>
+                    <td>{{ $employer->name }}</td>
+                    <td>{{ $employer->email_or_phone }}</td>
+                    <td><a href="#">update</a></td>
+                    <td><a href="#">delete</a></td>
+                  </tr>
+                  @endforeach
+
+
+                </tbody>
+              </table>
+
+               @else
+                  <div>
+                      <h2>No posts found</h2>
+                  </div>
+              @endif
+          </div>
+        </div>
       </div>
-
   </body>
 
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -136,3 +152,5 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
   </html>
+
+

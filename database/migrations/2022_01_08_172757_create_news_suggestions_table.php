@@ -18,8 +18,9 @@ class CreateNewsSuggestionsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('content');
-            $table->date('deadline')->nullable();
+            $table->date('deadline');
             $table->string('type')->default('news');
+            $table->softDeletes();
             $table->timestamps();
 
         });

@@ -24,6 +24,8 @@ class Controller extends BaseController
 
     use AuthenticatesUsers;
 
+    
+
 
     // public function __construct()
     // {

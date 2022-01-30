@@ -22,6 +22,7 @@ class CreateWorksTable extends Migration
             $table->string('salary')->nullable();
             $table->string('schedule')->nullable();
             $table->string('type')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

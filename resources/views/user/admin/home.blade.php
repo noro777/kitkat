@@ -242,7 +242,7 @@
                       <i class="far fa-circle nav-icon"></i>
                       <p>Student</p>
                     </a>
-                  </li>  
+                  </li>
 
                     <li class="nav-item">
                     <a href="{{ route('admin.employer') }}" class="nav-link ">
@@ -280,6 +280,8 @@
                   </li>
                 </ul>
               </li>
+
+              {{--  {{ Auth::guard('student')->user(); }}  --}}
 
 
 

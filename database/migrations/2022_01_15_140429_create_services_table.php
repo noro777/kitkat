@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

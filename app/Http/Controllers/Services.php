@@ -13,11 +13,13 @@ class Services extends Controller
         $data = $request->validate([
             'name'=>'required',
             'image'=>'required',
+            'content'=>'required',
+            ''
         ]);
         if($request->hasFile('image')){
             $image      = $request->file('image');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('images',$fileName);
+            $image->move('images/services',$fileName);
             $data['image']  = $fileName;
 
             ModelsServices::create($data);
@@ -25,5 +27,16 @@ class Services extends Controller
             ModelsServices::create($data);
         }
         return redirect()->route('admin.services');
+    }
+
+    public function search(Request $req)
+    {
+        // dd($req->all());
+        $request = $req->all()['search'];
+        $services = ModelsServices::where('name','LIKE','%'.$request . '%')
+        // ->orWhere('email_or_phone','LIKE','%'.$request.'%')
+        ->get();
+
+        return view('user.admin.services',compact('services'));
     }
 }

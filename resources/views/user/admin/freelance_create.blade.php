@@ -57,6 +57,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            cost
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="cost"   >
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
 
                         <div class="row mb-0">
